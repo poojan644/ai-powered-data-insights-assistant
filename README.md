@@ -20,6 +20,14 @@ An AI-powered business intelligence dashboard that transforms CSV and Excel data
 
 ---
 
+# 🎥 Live Demo
+
+<p align="center">
+  <img src="screenshots/demo.gif" alt="Application Demo" width="100%">
+</p>
+
+---
+
 # 📑 Table of Contents
 
 - [Overview](#-overview)
