@@ -1,88 +1,268 @@
-# AI-Powered Data Insights Assistant
+<p align="center">
+  <img src="screenshots/banner.png" alt="AI-Powered Data Insights Assistant Banner" width="100%">
+</p>
 
-Upload a CSV/Excel file and get an instant AI-generated analysis: key trends,
-anomalies, data quality issues, and follow-up questions worth investigating.
-Then ask your own questions about the data in plain English.
+<h1 align="center">📊 AI-Powered Data Insights Assistant</h1>
 
-Built to show how AI can be layered on top of traditional data analysis
-workflows (pandas) rather than replacing them.
+<p align="center">
+An AI-powered business intelligence dashboard that transforms CSV and Excel datasets into interactive analytics, executive reports, and natural language conversations using <strong>Anthropic Claude AI</strong>.
+</p>
 
-## How it works
+<p align="center">
 
-1. You upload a file → **pandas** computes real statistics (describe, nulls,
-   correlations, top categorical values).
-2. That statistical summary (not the raw file) is sent to **Claude** with a
-   system prompt asking it to reason over the stats like an analyst would.
-3. You can then ask follow-up questions in a chat interface, grounded in
-   the same summary.
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
+![Claude](https://img.shields.io/badge/Anthropic-Claude-orange?style=for-the-badge)
+![MIT](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
-This matters: LLMs are unreliable at scanning raw spreadsheets themselves.
-The right pattern is "pandas computes, Claude explains" — this project
-demonstrates that pattern.
+</p>
 
-## Setup
+---
+
+# 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Technology Stack](#-technology-stack)
+- [Architecture](#-architecture)
+- [Application Preview](#-application-preview)
+- [Installation](#-installation)
+- [Project Structure](#-project-structure)
+- [Future Enhancements](#-future-enhancements)
+- [Author](#-author)
+- [License](#-license)
+
+---
+
+# 🌟 Overview
+
+**AI-Powered Data Insights Assistant** is a modern analytics application built using **Python**, **Streamlit**, **Pandas**, and **Anthropic Claude AI**.
+
+The application enables users to upload CSV or Excel datasets and instantly generate:
+
+- 📊 Interactive dashboards
+- 📈 Statistical summaries
+- ❤️ Dataset health metrics
+- 🤖 AI-generated executive reports
+- 💬 Natural language answers about the uploaded data
+
+This project demonstrates practical skills in **Python development, AI integration, business intelligence, dashboard design, and data analysis**.
+
+---
+
+# ✨ Key Features
+
+- 📂 CSV & Excel Upload
+- 📊 KPI Dashboard
+- ❤️ Dataset Health Score
+- 📋 Automatic Dataset Profiling
+- 📈 Statistical Summary
+- 📉 Interactive Visualizations
+- 🔥 Correlation Analysis
+- 🤖 AI Executive Report
+- 💬 AI Chat Assistant
+- 📥 Report Download
+- 🧪 Demo Mode (No API Credits Required)
+
+---
+
+# 🚀 Technology Stack
+
+| Category | Technology |
+|-----------|------------|
+| Language | Python |
+| Framework | Streamlit |
+| Data Processing | Pandas |
+| AI | Anthropic Claude API |
+| Environment | python-dotenv |
+| Spreadsheet Support | OpenPyXL |
+| Version Control | Git & GitHub |
+
+---
+
+# 🏗 Architecture
+
+<p align="center">
+<img src="screenshots/architecture.png" width="100%">
+</p>
+
+---
+
+# 🖼 Application Preview
+
+## 📊 Dashboard Overview
+
+<p align="center">
+<img src="screenshots/dashboard.png" width="100%">
+</p>
+
+Displays key performance indicators, dataset health score, and high-level business metrics.
+
+---
+
+## 📂 Dataset Preview
+
+<p align="center">
+<img src="screenshots/datasetpreview.png" width="100%">
+</p>
+
+Preview uploaded data and inspect column types, missing values, and structure.
+
+---
+
+## 📈 Analytics Dashboard
+
+<p align="center">
+<img src="screenshots/analytics.png" width="100%">
+</p>
+
+Explore descriptive statistics and interactive visualizations.
+
+---
+
+## 🔥 Correlation Analysis
+
+<p align="center">
+<img src="screenshots/correlationheatmap.png" width="100%">
+</p>
+
+Analyze relationships between numerical features to identify trends and dependencies.
+
+---
+
+## 🤖 AI Executive Report
+
+<p align="center">
+<img src="screenshots/executive-report.png" width="100%">
+</p>
+
+Generate concise executive summaries, key findings, risks, and recommendations using AI.
+
+---
+
+## 💬 AI Chat Assistant
+
+<p align="center">
+<img src="screenshots/chat-assistant.png" width="100%">
+</p>
+
+Ask natural language questions about the uploaded dataset and receive AI-powered responses.
+
+---
+
+# ⚙️ Installation
+
+## Clone the Repository
 
 ```bash
-# 1. Clone and enter the project
-git clone <your-repo-url>
-cd ai-data-insights
+git clone https://github.com/poojan644/ai-powered-data-insights-assistant.git
 
-# 2. Create a virtual environment
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+cd ai-powered-data-insights-assistant
+```
 
-# 3. Install dependencies
+## Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# 4. Add your API key
-cp .env.example .env
-# then paste your key from https://console.anthropic.com/settings/keys into .env
+## Configure API Key
 
-# 5. Run it
+Create a `.env` file:
+
+```text
+ANTHROPIC_API_KEY=your_api_key_here
+```
+
+If you don't have Anthropic API credits:
+
+```python
+DEMO_MODE = True
+```
+
+## Run the Application
+
+```bash
 streamlit run app.py
 ```
 
-Your browser will open at `http://localhost:8501`.
+---
 
-## Deploying it live (so you have a link, not just code)
+# 📂 Project Structure
 
-1. Push this repo to GitHub (the `.gitignore` already keeps your `.env` out of it).
-2. Go to [share.streamlit.io](https://share.streamlit.io), sign in with GitHub.
-3. Deploy this repo. In the app's **Settings → Secrets**, add:
-   ```
-   ANTHROPIC_API_KEY = "sk-ant-your-key-here"
-   ```
-4. You'll get a public URL like `yourname-ai-data-insights.streamlit.app` —
-   put this directly on your resume and LinkedIn.
+```text
+ai-powered-data-insights-assistant/
+│
+├── app.py
+├── README.md
+├── requirements.txt
+├── LICENSE
+├── .gitignore
+├── .env.example
+│
+├── sample_data/
+│     └── sample_sales_data.csv
+│
+└── screenshots/
+      ├── banner.png
+      ├── architecture.png
+      ├── dashboard.png
+      ├── datasetpreview.png
+      ├── analytics.png
+      ├── correlationheatmap.png
+      ├── executive-report.png
+      └── chat-assistant.png
+```
 
-## What to say about it in interviews
+---
 
-- **"Why did you send a summary instead of the raw data?"** → Cost and
-  reliability. Sending thousands of rows wastes tokens and LLMs make
-  arithmetic errors scanning raw tables; computing stats with pandas first
-  and having Claude reason over them is both cheaper and more accurate.
-- **"What would you improve with more time?"** → Add support for the model
-  to request specific pandas operations on demand (tool use / function
-  calling) instead of relying only on a pre-computed summary, and add
-  caching to avoid recomputing insights on every file re-upload.
-- **"How would this scale to bigger files?"** → Summary generation itself is
-  pandas, which scales fine. For very wide/tall data, I'd sample rows and
-  chunk the correlation matrix rather than passing every column.
+# 🔮 Future Enhancements
 
-## Resume / LinkedIn bullet points
+- Interactive Plotly visualizations
+- Correlation heatmaps with color gradients
+- PDF report export
+- Predictive analytics
+- Time-series forecasting
+- Azure App Service deployment
+- Docker containerization
+- User authentication
+- Dark mode support
 
-- Built an AI-powered data analysis tool (Streamlit + pandas + Claude API)
-  that auto-generates insight reports and answers natural-language questions
-  over uploaded datasets.
-- Designed a "compute-then-explain" pipeline where pandas performs
-  statistical analysis and an LLM translates results into plain-language
-  business insights, reducing manual EDA time.
-- Deployed a live demo accessible via public URL, with secrets management
-  and environment-based configuration for local vs. production use.
+---
 
-## Tech stack
+# 👩‍💻 Author
 
-- **Streamlit** — UI, file upload, chat interface
-- **pandas** — statistical computation (describe, correlations, nulls)
-- **Anthropic Claude API** — insight generation and Q&A
-- **python-dotenv** — local secrets management
+## **Pooja Borade**
+
+**Microsoft Certified**
+
+- ☁️ Azure Solutions Architect Expert
+- ☁️ Azure Administrator Associate
+- ☁️ Azure Fundamentals
+
+### Areas of Interest
+
+- Cloud Engineering
+- AI Engineering
+- Data Analytics
+- Business Intelligence
+- Systems Administration
+
+GitHub:
+
+https://github.com/poojan644
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+<p align="center">
+
+⭐ If you found this project useful, please consider giving it a star.
+
+</p>
